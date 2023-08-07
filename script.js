@@ -8,7 +8,7 @@ function displayToScreen(e){
     let buttonClassName = e.srcElement.className;
     console.log(buttonClassName)
     if (primaryScreen.textContent === "00"){
-        if (buttonClassName != "numbers"){
+        if (buttonClassName != "numbers" || buttonClicked === "0"){
             primaryScreen.textContent = "00";
         }
         else{
@@ -19,8 +19,13 @@ function displayToScreen(e){
 }
 
 function deleteFromScreen(){
-    let newContent = primaryScreen.textContent.slice(0,-1);
-    primaryScreen.textContent = newContent;
+    if (primaryScreen.textContent === "00"){
+        primaryScreen.textContent = "00";
+    }
+    else{
+        let newContent = primaryScreen.textContent.slice(0,-1);
+        newContent === "" ? primaryScreen.textContent = "00" : primaryScreen.textContent = newContent;
+    }
 }
 
 const primaryScreen = document.querySelector('.primary-screen');
@@ -34,4 +39,3 @@ const deleteButton = document.querySelector('.delete');
 
 numberButtons.forEach((button) => button.addEventListener('click', displayToScreen))
 operatorButtons.forEach((button) => button.addEventListener('click', displayToScreen))
-deleteButton.addEventListener('click', deleteFromScreen)
