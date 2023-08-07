@@ -21,6 +21,8 @@ body{
     box-shadow: 10px 10px 10px 0 black;
 }
 
+/* ----------------------------------------------------- */
+
 .screen{
     height: 100px;
     width: 90%;;
@@ -28,7 +30,31 @@ body{
     margin: 20px 0 10px 0;
     border-radius: 10px;
     box-shadow: inset 5px 5px 5px 0 black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 10px;
+    font-family: 'VT323', monospace;
+    letter-spacing: 1px;
 }
+
+.screen p{
+    margin: 0;
+}
+
+.primary-screen{
+    font-size: 1.8rem;
+    padding: 20px 0 ;
+}
+
+.seconday-screen{
+    font-size: 1.3rem; 
+    padding-top: 17px;
+    color: #E2E2E2;
+}
+
+/* ---------------------------------------------- */
 
 .button-row{
     display: flex;
@@ -42,16 +68,15 @@ body{
 button{
     height: 70px;
     flex: 1;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     background-color: #616161;
     border: 0;
     color: #DFDFDF;
     border-radius: 10px;
     font-weight: 600;
     transition: all 0.2s ease;
-
     box-shadow: 5px 5px 5px 0px black;
-
+    font-family: 'Orbitron', sans-serif;
 }
 
 .operator{
@@ -61,8 +86,18 @@ button{
 
 .clear, .delete{
     background-color: #f08080;
-    color: black;
-    font-weight: 100;
+    color: #303030;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.equal{
+    background-color: #33cb33;
+}
+
+.equal:hover{
+    background-color: #79FF6B;
+    color: #303030;
 }
 
 .bottom-row{
@@ -85,14 +120,18 @@ button:active{
     transform: scale(0.9);
 }
 
+/* ------------------------------------- */
+
 footer{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    font-size: 20px;
-    margin: 30px 0 0 0 ;
-
+    font-size: 15px;
+    font-weight: bold;
+    margin: 15px 0 0 0 ;
+    /* font-family: 'Pacifico', cursive; */
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 footer a{
