@@ -48,7 +48,7 @@ body{
     padding: 20px 0 ;
 }
 
-.seconday-screen{
+.secondary-screen{
     font-size: 1.3rem; 
     padding-top: 17px;
     color: #E2E2E2;
@@ -137,10 +137,15 @@ footer{
 footer a{
     text-decoration: none;
     color: black;
+}
+
+footer .github{
+    text-decoration: none;
+    color: black;
     font-size: 25px;
     transition: all 0.3s ease-in-out;
 }
 
-footer a:hover{
+footer .github:hover{
     transform: scale(1.25);
 }
