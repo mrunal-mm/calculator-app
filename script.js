@@ -32,24 +32,6 @@ function deleteFromScreen(){
     }
 }
 
-// Functions for calculation
-
-function add(a,b){
-    return a+b;
-}
-
-function subtract(a,b){
-    return a-b;
-}
-
-function multiply(a,b){
-    return a*b;
-}
-
-function divide(a,b){
-    return a/b;
-}
-
 function assignOperation(){
     let textContent = primaryScreen.textContent;
    
@@ -74,20 +56,20 @@ const secondaryScreen = document.querySelector('.secondary-screen');
 const numberButtons = document.querySelectorAll('.numbers');
 const operatorButtons = document.querySelectorAll('.operator');
 
-// const clearButton = document.querySelector('.clear');
-// const deleteButton = document.querySelector('.delete');
-
 numberButtons.forEach((button) => button.addEventListener('click', displayToScreen))
 operatorButtons.forEach((button) => button.addEventListener('click', displayToScreen))
+operatorButtons.forEach((button)=> button.addEventListener('click', compute))
 
+function compute(){
 
+}
 // Calculations
 
 const calculate = {
-    "+" : add,
-    "-" : subtract,
-    "x" : multiply,
-    "÷" : divide,
+    "+" : (a,b)=>a+b,
+    "-" : (a,b)=>a-b,
+    "x" : (a,b)=>a*b,
+    "÷" : (a,b)=>a/b,
 };
 
 let num1, num2, operator;
