@@ -3,13 +3,17 @@ function clearScreen(){
     secondaryScreen.textContent = "00";
 }
 
+function clearPrimaryScreen(){
+    primaryScreen.textContent = "00";
+}
+
 function displayToScreen(e){
     let buttonClicked = e.target.textContent;
     let buttonClassName = e.srcElement.className;
-    console.log(buttonClassName)
+
     if (primaryScreen.textContent === "00"){
         if (buttonClassName != "numbers" || buttonClicked === "0"){
-            primaryScreen.textContent = "00";
+            clearPrimaryScreen();
         }
         else{
             primaryScreen.textContent = buttonClicked;
@@ -20,13 +24,49 @@ function displayToScreen(e){
 
 function deleteFromScreen(){
     if (primaryScreen.textContent === "00"){
-        primaryScreen.textContent = "00";
+        clearPrimaryScreen();
     }
     else{
         let newContent = primaryScreen.textContent.slice(0,-1);
-        newContent === "" ? primaryScreen.textContent = "00" : primaryScreen.textContent = newContent;
+        newContent === "" ? clearPrimaryScreen() : primaryScreen.textContent = newContent;
     }
 }
+
+// Functions for calculation
+
+function add(a,b){
+    return a+b;
+}
+
+function subtract(a,b){
+    return a-b;
+}
+
+function multiply(a,b){
+    return a*b;
+}
+
+function divide(a,b){
+    return a/b;
+}
+
+function assignOperation(){
+    let textContent = primaryScreen.textContent;
+   
+    for (let i=0; i<textContent.length; i++){
+        if (textContent[i] === "+"|| textContent[i] === "-" || textContent[i] === "÷" || textContent[i] === "x"){
+            num1 = +textContent.slice(0,i);
+            num2 = +textContent.slice(i+1, textContent.length);
+            operator = textContent[i];
+            break;
+        }
+    }  
+    console.log(`num1 - ${num1}, num2 - ${num2}, operator - ${operator}.`)
+    secondaryScreen.textContent = textContent;
+    primaryScreen.textContent = calculate[operator](num1,num2);
+}
+
+// Calculator Elements
 
 const primaryScreen = document.querySelector('.primary-screen');
 const secondaryScreen = document.querySelector('.secondary-screen');
@@ -34,8 +74,20 @@ const secondaryScreen = document.querySelector('.secondary-screen');
 const numberButtons = document.querySelectorAll('.numbers');
 const operatorButtons = document.querySelectorAll('.operator');
 
-const clearButton = document.querySelector('.clear');
-const deleteButton = document.querySelector('.delete');
+// const clearButton = document.querySelector('.clear');
+// const deleteButton = document.querySelector('.delete');
 
 numberButtons.forEach((button) => button.addEventListener('click', displayToScreen))
 operatorButtons.forEach((button) => button.addEventListener('click', displayToScreen))
+
+
+// Calculations
+
+const calculate = {
+    "+" : add,
+    "-" : subtract,
+    "x" : multiply,
+    "÷" : divide,
+};
+
+let num1, num2, operator;
